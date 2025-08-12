@@ -1,0 +1,31 @@
+#include <stdio.h>
+
+int main() {
+    char exp[100];
+    int i;
+
+    printf("Enter an arithmetic expression: ");
+    gets(exp); // taking full line as input (unsafe but okay for lab use)
+
+    for (i = 0; exp[i] != '\0'; i++) {
+        if ((exp[i] >= 'a' && exp[i] <= 'z') || (exp[i] >= 'A' && exp[i] <= 'Z')) {
+            printf("IDENTIFIER: %c\n", exp[i]);
+        }
+        else if (exp[i] >= '0' && exp[i] <= '9') {
+            printf("NUMBER: ");
+            while (exp[i] >= '0' && exp[i] <= '9') {
+                printf("%c", exp[i]);
+                i++;
+            }
+            printf("\n");
+            i--; // step back because loop will increment
+        }
+        else if (exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/' || exp[i] == '%') {
+            printf("OPERATOR: %c\n", exp[i]);
+        }
+        else if (exp[i] == '(' || exp[i] == ')') {
+            printf("PARENTHESIS: %c\n", exp[i]);
+        }
+    }
+    return 0;
+}
