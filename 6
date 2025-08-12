@@ -1,27 +1,42 @@
-#include <stdio.h>
-
-int main() {
+#include<stdio.h>
+int main()
+{
     char str[100];
-    int i, valid = 1;
-
-    printf("Enter a string to check against regex 'a(a|b)*a': ");
-    scanf("%s", str);
-
-    if (str[0] != 'a') valid = 0;
-    else {
-        for (i = 1; str[i+1] != '\0'; i++) {
-            if (!(str[i] == 'a' || str[i] == 'b')) {
+    int len = 0, valid = 1;
+    printf("Enter a string to check against the regex 'a(a|b)*a': ");
+    gets(str);
+    
+    while(str[len]!='\0')
+    {
+        len++;
+    }
+    
+    if(len<2 || str[0]!='a' || str[len-1]!='a')
+    {
+        valid = 0;
+    }
+    
+    else
+    {
+        for(int i = 1; i<len-1; i++)
+        {
+            if(str[i]!='a' && str[i]!='b')
+            {
                 valid = 0;
                 break;
             }
         }
-        if (str[i] != 'a') valid = 0;
     }
 
-    if (valid)
-        printf("'%s' MATCHES the regular expression 'a(a|b)*a'.\n", str);
+    if(valid)
+    {
+        printf("'%s' MATCHES the regular expression.\n",str);
+    }
     else
-        printf("'%s' DOES NOT MATCH the regular expression 'a(a|b)*a'.\n", str);
-
+    {
+        printf("'%s' DOES NOT MATCHES the regular expression.\n",str);
+    }
+    
+    
     return 0;
 }
