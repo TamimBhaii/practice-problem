@@ -1,31 +1,55 @@
-#include <stdio.h>
-
-int main() {
-    char exp[100];
-    int i;
-
-    printf("Enter an arithmetic expression: ");
-    gets(exp); // taking full line as input (unsafe but okay for lab use)
-
-    for (i = 0; exp[i] != '\0'; i++) {
-        if ((exp[i] >= 'a' && exp[i] <= 'z') || (exp[i] >= 'A' && exp[i] <= 'Z')) {
-            printf("IDENTIFIER: %c\n", exp[i]);
+#include<stdio.h>
+int main()
+{
+    char str[100];
+    printf("Input: ");
+    gets(str);
+    
+    int i = 0;
+    while(str[i]!='\0')
+    {
+        if(str[i]==' ')
+        {
+            i++;
+            continue;
         }
-        else if (exp[i] >= '0' && exp[i] <= '9') {
+        
+        else if((str[i]>='a' && str[i]<='z') || (str[i]>='A' && str[i]<='Z'))
+        {
+            printf("IDENTIFIER: %c\n",str[i]);
+            i++;
+        }
+        
+        else if(str[i]>='0' && str[i]<='9')
+        {
             printf("NUMBER: ");
-            while (exp[i] >= '0' && exp[i] <= '9') {
-                printf("%c", exp[i]);
+            while(str[i]>='0' && str[i]<='9')
+            {
+                printf("%c",str[i]);
                 i++;
             }
             printf("\n");
-            i--; // step back because loop will increment
         }
-        else if (exp[i] == '+' || exp[i] == '-' || exp[i] == '*' || exp[i] == '/' || exp[i] == '%') {
-            printf("OPERATOR: %c\n", exp[i]);
+        
+        else if(str[i]=='+' || str[i]=='-' || str[i]=='*' || str[i]=='/')
+        {
+            printf("OPERATOR: %c\n",str[i]);
+            i++;
         }
-        else if (exp[i] == '(' || exp[i] == ')') {
-            printf("PARENTHESIS: %c\n", exp[i]);
+        
+        else if(str[i]=='(' || str[i]==')')
+        {
+            printf("PARENTHESIS: %c\n",str[i]);
+            i++;
         }
+        
+        else
+        {
+            printf("Unknown %c\n", str[i]);
+            i++;
+        }
+        
     }
+    
     return 0;
 }
