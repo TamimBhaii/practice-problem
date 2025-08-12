@@ -1,41 +1,43 @@
-#include <stdio.h>
-
+#include<stdio.h>
 int main()
 {
     char str[100];
-
-    while (scanf("%[^\n]", str) != EOF)
+    
+    while(scanf("%[^\n]", str)!=EOF)
     {
-        getchar(); // consume newline after scanf
-
-        if ((str[0] == '+' || str[0] == '-' || str[0] == '*' || str[0] == '/' || str[0] == '%') && str[1] == '\0')
+        getchar();
+        if((str[0]=='+' || str[0]=='-'  || str[0]=='*' || str[0]=='/' || str[0]=='%') &&( str[1]=='\0'))
         {
-            printf("'%s': Arithmetic Operator\n", str);
+            printf("'%s': Arithmetic Operator\n",str);
         }
-        else if ((str[0] == '=' && str[1] == '=' && str[2] == '\0') ||
-                 (str[0] == '!' && str[1] == '=' && str[2] == '\0') ||
-                 (str[0] == '<' && str[1] == '=' && str[2] == '\0') ||
-                 (str[0] == '>' && str[1] == '=' && str[2] == '\0') ||
-                 (str[0] == '<' && str[1] == '\0') ||
-                 (str[0] == '>' && str[1] == '\0'))
+        
+        else if((str[0]=='=' && str[1]=='=' && str[2]=='\0') || 
+        (str[0]=='!' && str[1]=='=' && str[2]=='\0') || 
+        (str[0]=='<' && str[1]=='=' && str[2]=='\0') ||
+        (str[0]=='>' && str[1]=='=' && str[2]=='\0') ||
+        (str[0]=='<' && str[1]=='\0') || (str[0]=='>' && str[1]=='\0'))
         {
-            printf("'%s': Relational Operator\n", str);
+            printf("'%s': Relation Operator\n",str);
         }
-        else if ((str[0] == '&' && str[1] == '&' && str[2] == '\0') ||
-                 (str[0] == '|' && str[1] == '|' && str[2] == '\0') ||
-                 (str[0] == '!' && str[1] == '\0'))
+        
+        else if((str[0]=='&' && str[1]=='&' && str[2]=='\0') ||
+        (str[0]=='|' && str[1]=='|' && str[2]=='\0') ||
+        (str[0]=='!' && str[1]=='\0'))
         {
-            printf("'%s': Logical Operator\n", str);
+            printf("'%s': Logical Operator\n",str);
         }
-        else if (str[0] == '=' && str[1] == '\0')
+        
+        else if(str[0]=='=' && str[1]=='\0')
         {
-            printf("'%s': Assignment Operator\n", str);
+            printf("'%s': Assignment Operator\n",str);
         }
-        else
+        
+        else 
         {
-            printf("'%s': Invalid Operator\n", str);
+            printf("Invalid Operator\n");
         }
+        
     }
-
+    
     return 0;
 }
