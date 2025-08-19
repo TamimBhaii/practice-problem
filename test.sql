@@ -1,0 +1,18 @@
+CREATE DATABASE test_db;
+USE test_db;
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    full_name VARCHAR(100),
+    email VARCHAR(100) UNIQUE,
+    password VARCHAR(255)
+);
+SELECT * FROM users;
+
+SET FOREIGN_KEY_CHECKS = 0;
+DELETE FROM users;
+
+SET SQL_SAFE_UPDATES = 0;
+DROP TABLE users;
+
+SET FOREIGN_KEY_CHECKS = 1;
